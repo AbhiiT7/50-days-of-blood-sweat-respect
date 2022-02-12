@@ -15,23 +15,26 @@ public static int max(int a ,int b) {
     }
     return b;
 }
-    public static int main(String[] args) {
-        int[] piles = new int[5];
+    public static int eatingspeed( int[] piles , int H,int l,int h,int mid){
+
+        for (int i =0; i< piles.length;i++){
+            h= max(h,piles[i]);
+        }
+        while(l<h){
+            if (caneat(mid,piles,H)){
+                h=mid-1;
+            }
+            l= mid+1;
+        }
+        return l;
+    }
+
+    public static void main(String[] args) {
+        int[] piles = {3,6,7,11};
+//       int[] piles
         int H = 8,l = 0,h= piles.length;
         int mid = l + (h - l) / 2;
-
-        public static int eatingspeed( int[] piles , int H){
-            for (int i =0; i< piles.length;i++){
-                h= max(h,piles[i]);
-            }
-            while(l<h){
-                if (caneat(mid,piles,H)){
-                    h=mid-1;
-                }
-                l= mid+1;
-            }
-            return l;
-        }
+        eatingspeed(  piles ,  H, l, h, mid);
 
     }
 }
