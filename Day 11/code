@@ -1,40 +1,23 @@
-public class Solution {
-    public static  boolean caneat(int mid, int[] piles, int H) {
-        int sum = 0; // i will save hrs in this var
-        for (int i = 0; i < piles.length; i++) {
-            sum += piles[i] / mid;
-            if (piles[i] % mid != 0)
-                sum++;
+import java.util.Arrays;
+class Solution {
+    public static int  minEatingSpeed(int[] piles, int H) {
+        int low = 1, high = 1000000000, mid = 0;
+        while (low <= high) {
+            mid  = (low + high) / 2;
+            int h = 0;
+            for (int i = 0; i < piles.length; i ++)
+                h += Math.ceil(1.0 * piles[i] / mid );
+            if (h > H)
+                low = mid  + 1;
+            else
+                high = mid  - 1;
         }
-        return !(sum > H);
+        return low;
     }
-
-public static int max(int a ,int b) {
-    if (a > b) {
-        return a;
-    }
-    return b;
-}
-    public static int eatingspeed( int[] piles , int H,int l,int h,int mid){
-
-        for (int i =0; i< piles.length;i++){
-            h= max(h,piles[i]);
-        }
-        while(l<h){
-            if (caneat(mid,piles,H)){
-                h=mid-1;
-            }
-            l= mid+1;
-        }
-        return l;
-    }
-
     public static void main(String[] args) {
-        int[] piles = {3,6,7,11};
-//       int[] piles
-        int H = 8,l = 0,h= piles.length;
-        int mid = l + (h - l) / 2;
-        eatingspeed(  piles ,  H, l, h, mid);
-
+        int[] piles = {23,7,11,23,4,20};
+        int H = 8,h= Arrays.stream(piles).max().getAsInt();
+        minEatingSpeed( piles,H);
     }
 }
+
