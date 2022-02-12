@@ -4,9 +4,12 @@ class Solution {
         int low = 1, high = 1000000000, mid = 0;
         while (low <= high) {
             mid  = (low + high) / 2;
-            int h = 0;
+            
+            int h = 0; // it will keepo count for hrs.
+            h= Arrays.stream(piles).max().getAsInt();
             for (int i = 0; i < piles.length; i ++)
                 h += Math.ceil(1.0 * piles[i] / mid );
+                
             if (h > H)
                 low = mid  + 1;
             else
@@ -16,7 +19,7 @@ class Solution {
     }
     public static void main(String[] args) {
         int[] piles = {23,7,11,23,4,20};
-        int H = 8,h= Arrays.stream(piles).max().getAsInt();
+        int H = 8,
         minEatingSpeed( piles,H);
     }
 }
