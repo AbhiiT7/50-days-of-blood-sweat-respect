@@ -1,0 +1,37 @@
+public class Solution {
+    public static  boolean caneat(int mid, int[] piles, int H) {
+        int sum = 0; // i will save hrs in this var
+        for (int i = 0; i < piles.length; i++) {
+            sum += piles[i] / mid;
+            if (piles[i] % mid != 0)
+                sum++;
+        }
+        return !(sum > H);
+    }
+
+public static int max(int a ,int b) {
+    if (a > b) {
+        return a;
+    }
+    return b;
+}
+    public static int main(String[] args) {
+        int[] piles = new int[5];
+        int H = 8,l = 0,h= piles.length;
+        int mid = l + (h - l) / 2;
+
+        public static int eatingspeed( int[] piles , int H){
+            for (int i =0; i< piles.length;i++){
+                h= max(h,piles[i]);
+            }
+            while(l<h){
+                if (caneat(mid,piles,H)){
+                    h=mid-1;
+                }
+                l= mid+1;
+            }
+            return l;
+        }
+
+    }
+}
