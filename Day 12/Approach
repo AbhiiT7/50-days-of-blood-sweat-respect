@@ -1,0 +1,6 @@
+Sort Even and Odd Indices Independently
+Approach :- 
+i am creating 2 priority Queue one for odd and another for even.
+after sorting them , create main array and add one element from odd Queue and one from even. after that retuirn main Queue.
+
+in 30 min:-i had done research on IOT for my personal project.  
